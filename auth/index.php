@@ -2,26 +2,30 @@
 session_start();
 $pageName = "Login";
 require '../includes/header.php';
+
+if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn']) {
+  header("Location: ../index.php");
+  exit();
+}
+
 if (isset($_POST['login'])) {
+  $uname = $_POST['uname'];
   $email = $_POST['email'];
   $pass = $_POST['password'];
-  echo "Welcome";
   $users = file("users.sk");
-  // $_SESSION['loggedIn'] = false;
-  // $loggedIn = false;
   foreach ($users as $user) {
-    list($fn, $ln, $e, $p) = explode("|", $user);
-    if ($email == $e && password_verify($pass, $p)) {
-      // $loggedIn = true;
+    list($id, $fn, $ln, $un, $em, $pw, $rl) = explode("|", $user);
+    if (($email == $em || $uname == $un) && password_verify($pass, $pw)) {
       $_SESSION['loggedIn'] = true;
       $_SESSION['fname'] = $fn;
       $_SESSION['lname'] = $ln;
-      $_SESSION['email'] = $e;
+      $_SESSION['uname'] = $un;
+      $_SESSION['email'] = $em;
+      $_SESSION['role'] = $rl;
       break;
     }
   }
   if ($_SESSION['loggedIn'] = true) {
-    echo "Logged In";
     header("Location: ../index.php");
   } else {
     $msg = "Email or Password do not match";
@@ -38,11 +42,11 @@ if (isset($_POST['login'])) {
     </div>
     <form action="" method="post">
       <div class="my-4">
-        <label for="email">
-          <span class="text-base text-gray-900 font-bold">Email Address</span>
+        <label for="auth">
+          <span class="text-base text-gray-900 font-bold">Username or Email</span>
         </label>
         <div class="flex items-center relative my-1.5">
-          <input type="email" name="email" class="block border-2 border-blue-400 focus:outline-none px-4 py-1.5 w-full" id="email" placeholder="someone@example.com" required />
+          <input type="text" name="email" class="block border-2 border-blue-400 focus:outline-none px-4 py-1.5 w-full" id="auth" placeholder="Username or Email" required />
         </div>
       </div>
       <div class="my-4">
@@ -58,11 +62,11 @@ if (isset($_POST['login'])) {
       </div>
     </form>
     <div class="flex items-center justify-center gap-2 mt-4 mb-0">
-      <p>Need a account.</p>
+      <p>Need an account.</p>
       <a href="register.php">Register Here</a>
     </div>
   </div>
 </section>
 </main>
 
-<?php require '../includes/footer.php'; ?>
+<?php require '../includes/footer2.php'; ?>

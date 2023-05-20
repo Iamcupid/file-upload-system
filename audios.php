@@ -1,6 +1,6 @@
 <?php
 session_start();
-$pageName = "Pictures";
+$pageName = "Documents";
 require './includes/header.php';
 
 if(!$_SESSION['loggedIn']){
@@ -16,16 +16,27 @@ if(!$_SESSION['loggedIn']){
 <div class="w-5/6">
   <section class="mx-4 my-12">
     <?php
-      $imagePath = "uploads/images";
-      $imageExtensions = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+      $audioPath = "uploads/audios";
+      $audioExtensions = ['aac', 'mpeg','midi','ogg','wav','webm','mp3'];
       function displayFiles($path, $extensions) {
         $files = scandir($path);
         foreach ($files as $file) {
           $extension = pathinfo($file, PATHINFO_EXTENSION);
           if (in_array($extension, $extensions)) {
-            if ($extension !== 'pdf' ) {
-              echo "<div class='block bg-gray-100 rounded-md shadow-md shadow-gray-300 relative p-3 xs:p-2'>
-              <img src='{$path}/{$file}' class='block rounded-md w-full' alt='image file' />
+            // if ($extension == 'pdf' ) {
+              echo "<div class='flex items-center justify-center gap-2 bg-gray-100 rounded-full shadow-md shadow-gray-300 mt-2 text-xs text-white font-bold pr-2 w-full'>
+                <audio controls class=''>
+                  <source src='{$path}/{$file}' type='audio/mp3' />
+                </audio>
+                <button type='button' class='block bg-red-500 hover:bg-red-600 rounded-full p-2 xs:py-1 w-8 h-8' data-imagename='{$file}' title='Delete' onclick='del(\"{$file}\")' >
+                  <i class='fas fa-trash-alt'></i>
+                </button>
+              </div>";
+
+              /*<div class='block bg-gray-100 rounded-md shadow-md shadow-gray-300 relative p-3 xs:p-2' >
+               <audio controls class='-mx-2'>
+                <source src='{$path}/{$file}' type='audio/mp3' />
+              </audio>
               <div class='grid grid-cols-2 gap-2 mt-2 text-xs text-white font-bold'>
                 <a href='{$path}/{$file}' class='block text-center bg-blue-500 hover:bg-blue-600 rounded-md px-2 py-2 xs:py-1 w-full' title='Download' download >
                   <i class='fas fa-download'></i>
@@ -33,16 +44,16 @@ if(!$_SESSION['loggedIn']){
                 <button type='button' class='block bg-red-500 hover:bg-red-600 rounded-md px-2 py-2 xs:py-1 w-full' data-imagename='{$file}' title='Delete' onclick='del(\"{$file}\")' >
                   <i class='fas fa-trash-alt'></i>
                 </button>
-              </div></div>";
-            }
+              </div></div>*/
+            // }
           }
         }
       }
-      echo "<div class=\"block bg-gray-100 rounded-md shadow-md shadow-gray-300 px-6 py-2 my-2 w-full\">
-              <h2 class=\"text-2xl text-gray-800 font-bold\">Displaying All Images</h2>
+      echo "<div class=\"block bg-gray-100 rounded-md shadow-md shadow-gray-300 px-6 py-2 mt-8 my-2 w-full\">
+              <h2 class=\"text-2xl text-gray-800 font-bold\">Displaying All Audios</h2>
             </div>
-            <div class='grid grid-cols-6 xs:grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 xs:gap-3 my-6'>";
-              displayFiles($imagePath, $imageExtensions);
+            <div class='grid grid-cols-3 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-6 xs:gap-3 my-6'>";
+              displayFiles($audioPath, $audioExtensions);
       echo "</div>";
     ?>
     <script>

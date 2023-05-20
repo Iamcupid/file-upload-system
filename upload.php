@@ -9,15 +9,20 @@ if(isset($_POST['upload'])){
   $f = $_FILES['file'];
   if ($f['size'] <= 1024 * 1024) {
     $allowedImages = array("image/jpg", "image/jpeg", "image/gif", "image/png", "image/webp");
+    $allowedAudios = array("audio/aac", "audio/mpeg", "audio/midi", "audio/ogg", "audio/wav", "audio/webm");
     $allowedPDFs = array("application/pdf");
     if (in_array($f['type'], $allowedImages)) {
-      $name = time() . "_sk" . ".jpg";
+      $name = date("Y-m-d") . "_" . time() . "_sk" . ".jpg";
       move_uploaded_file($f['tmp_name'], "uploads/images/" . $name);
       $message = "Image upload complete";
     } elseif (in_array($f['type'], $allowedPDFs)) {
-      $name = time() . "_sk" .".pdf";
+      $name = date("Y-m-d") . "_" . time() . "_sk" .".pdf";
       move_uploaded_file($f['tmp_name'], "uploads/pdfs/" . $name);
       $message = "PDF upload complete";
+    } elseif (in_array($f['type'], $allowedAudios)) {
+      $name = date("Y-m-d") . "_" . time() . "_sk" .".mp3";
+      move_uploaded_file($f['tmp_name'], "uploads/audios/" . $name);
+      $message = "Audio upload complete";
     } else {
       $message = "File type not allowed";
     }

@@ -14,7 +14,7 @@
     <li class="block hover:bg-gray-300">
       <a href="upload.php" class="flex items-center xs:justify-center sm:justify-center gap-4 md:gap-2 xs:text-center px-8 md:px-3 lg:px-6 py-2" >
         <i class="fas fa-upload w-4 xs:w-fit sm:w-fit h-4 xs:h-fit sm:h-fit" ></i>
-        <span class="xs:hidden sm:hidden" >Uploads</span>
+        <span class="xs:hidden sm:hidden" >Upload</span>
       </a>
     </li>
     <li class="block hover:bg-gray-300">
@@ -27,6 +27,24 @@
       <a href="documents.php" class="flex items-center xs:justify-center sm:justify-center gap-4 md:gap-2 xs:text-center px-8 md:px-3 lg:px-6 py-2" >
         <i class="fas fa-file w-4 xs:w-fit sm:w-fit h-4 xs:h-fit sm:h-fit" ></i>
         <span class="xs:hidden sm:hidden" >Documents</span>
+      </a>
+    </li>
+    <li class="block hover:bg-gray-300">
+      <a href="audios.php" class="flex items-center xs:justify-center sm:justify-center gap-4 md:gap-2 xs:text-center px-8 md:px-3 lg:px-6 py-2" >
+        <i class="fas fa-music w-4 xs:w-fit sm:w-fit h-4 xs:h-fit sm:h-fit" ></i>
+        <span class="xs:hidden sm:hidden" >Audios</span>
+      </a>
+    </li>
+    <li class="block hover:bg-gray-300">
+      <a href="" class="flex items-center xs:justify-center sm:justify-center gap-4 md:gap-2 xs:text-center px-8 md:px-3 lg:px-6 py-2" >
+        <i class="fas fa-video w-4 xs:w-fit sm:w-fit h-4 xs:h-fit sm:h-fit" ></i>
+        <span class="xs:hidden sm:hidden" >Videos</span>
+      </a>
+    </li>
+    <li class="block hover:bg-gray-300">
+      <a href="users.php" class="flex items-center xs:justify-center sm:justify-center gap-4 md:gap-2 xs:text-center px-8 md:px-3 lg:px-6 py-2" >
+        <i class="fas fa-users w-4 xs:w-fit sm:w-fit h-4 xs:h-fit sm:h-fit" ></i>
+        <span class="xs:hidden sm:hidden" >Users</span>
       </a>
     </li>
     <li class="block hover:bg-gray-300">

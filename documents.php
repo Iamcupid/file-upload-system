@@ -14,7 +14,7 @@ if(!$_SESSION['loggedIn']){
 <main class="flex bg-white" >
 <?php include './includes/sidebar.php' ?>
 <div class="w-5/6">
-  <section class="mx-20 xs:mx-4 sm:mx-6 md:mx-8 lg:mx-12 my-12">
+  <section class="mx-4 my-12">
     <?php
       $pdfPath = "uploads/pdfs";
       $pdfExtensions = ['pdf'];
